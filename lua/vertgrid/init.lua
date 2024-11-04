@@ -26,10 +26,10 @@ local function Render()
     local first_line = vim.fn.line('w0')
     local last_line = vim.fn.line('w$')
 
-    for i = cursor_position, first_line, -size do
+    for i = cursor_position - size, first_line, -size do
         Highlight(i)
     end
-    for i = cursor_position, last_line, size do
+    for i = cursor_position + size, last_line, size do
         Highlight(i)
     end
 end
