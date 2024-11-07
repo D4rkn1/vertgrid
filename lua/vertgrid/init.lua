@@ -34,6 +34,13 @@ local function Render()
     end
 end
 
+vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
+    group = group,
+    callback = function()
+        vim.api.nvim_buf_clear_highlight(0, ns_id, 1, -1)
+        vim.api.nvim_win_set_hl_ns(0, 0)
+    end
+})
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter", "CursorMoved" }, {
     group = group,
     callback = function()
